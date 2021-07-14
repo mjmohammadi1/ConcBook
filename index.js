@@ -13,5 +13,5 @@ app.use(apiErrorHandler);
 const { SERVER_PORT } = process.env;
 
 app.listen(SERVER_PORT, () => {
-  console.log(`Example app listening at http://localhost:${SERVER_PORT}`);
+  console.log(`App listening at http://localhost:${SERVER_PORT}`);
 });

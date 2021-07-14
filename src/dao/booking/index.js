@@ -74,7 +74,7 @@ const book = async ({ roomName, companyName, event_start, event_end } = {}) => {
     event_end: new Date(event_endTS),
   });
 
-  return 'reservation created';
+  return { message: 'reservation created' };
 };
 const cancle = async ({ roomName, event_start, event_end }) => {
   const [{ id: roomId }] = await getRoomInfo(roomName);
@@ -83,7 +83,7 @@ const cancle = async ({ roomName, event_start, event_end }) => {
 
   const result = await deleteReservation(roomId, event_startTS, event_endTS);
 
-  if (result > 0) return 'successfully deleted';
+  if (result > 0) return { message: 'successfully deleted' };
   else throw ApiError.badRequest('reservation not found');
 };
 

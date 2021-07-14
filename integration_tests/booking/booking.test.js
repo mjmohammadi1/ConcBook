@@ -30,7 +30,7 @@ describe('booking service', () => {
           event_start: '09:00',
           event_end: '17:00',
         };
-        const [bookResult] = await book(body);
+        const result = await book(body);
         const rooms = await getAllAvailable();
 
         let allavilabilities = rooms.reduce((acc, element) => acc + element.availabilities.length, 0);
@@ -49,7 +49,7 @@ describe('booking service', () => {
       };
       try {
         const result = await book(body);
-        expect(result).to.be.equal('reservation created');
+        expect(result.message).to.be.equal('reservation created');
       } catch (err) {
         console.error(err.message);
       }
@@ -76,27 +76,27 @@ describe('booking service', () => {
           event_end: '17:00',
         };
         try {
-          const [reservation1] = await book(body);
+          const reservation1 = await book(body);
           body.roomName = 'P02';
-          const [reservation2] = await book(body);
+          const reservation2 = await book(body);
           body.roomName = 'P03';
-          const [reservation3] = await book(body);
+          const reservation3 = await book(body);
           body.roomName = 'P04';
-          const [reservation4] = await book(body);
+          const reservation4 = await book(body);
           body.roomName = 'P05';
-          const [reservation5] = await book(body);
+          const reservation5 = await book(body);
           body.roomName = 'P06';
-          const [reservation6] = await book(body);
+          const reservation6 = await book(body);
           body.roomName = 'P07';
-          const [reservation7] = await book(body);
+          const reservation7 = await book(body);
           body.roomName = 'P08';
-          const [reservation8] = await book(body);
+          const reservation8 = await book(body);
           body.roomName = 'P09';
-          const [reservation9] = await book(body);
+          const reservation9 = await book(body);
           body.roomName = 'P10';
-          const [reservation10] = await book(body);
+          const reservation10 = await book(body);
           body.roomName = 'C10';
-          const [reservation11] = await book(body);
+          const reservation11 = await book(body);
         } catch (err) {
           expect(err.message).to.be.equal('You Reached The Maximum Reservation Limit');
           expect(err.code).to.be.equal(400);
@@ -138,9 +138,9 @@ describe('booking service', () => {
           event_end: '11:00',
         };
         try {
-          const [bookResult1] = await book(body);
+          const bookResult1 = await book(body);
           body.companyName = 'PEPSI';
-          const [bookResult2] = await book(body);
+          const bookResult2 = await book(body);
         } catch (err) {
           expect(err.message).to.be.equal('This Period is already booked');
           expect(err.code).to.be.equal(400);
@@ -154,18 +154,18 @@ describe('booking service', () => {
           event_end: '11:00',
         };
         try {
-          const [bookResult1] = await book(body);
+          const bookResult1 = await book(body);
 
           body.companyName = 'PEPSI';
           body.event_start = '13:00';
           body.event_end = '14:00';
-          const [bookResult2] = await book(body);
+          const bookResult2 = await book(body);
 
           body.companyName = 'PEPSI';
           body.event_start = '12:00';
           body.event_end = '15:00';
 
-          const [bookResult3] = await book(body);
+          const bookResult3 = await book(body);
         } catch (err) {
           expect(err.message).to.be.equal('This Period is already booked');
           expect(err.code).to.be.equal(400);
@@ -184,7 +184,7 @@ describe('booking service', () => {
         const bookResult = await book(body);
         const cancleResult = await cancle(body);
 
-        expect(cancleResult).to.be.equal('successfully deleted');
+        expect(cancleResult.message).to.be.equal('successfully deleted');
       } catch (err) {
         console.error(err.message);
       }

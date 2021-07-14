@@ -77,7 +77,7 @@ We can make 3 types of requests to the booking system at the moment:
 This request is helpful to get the available rooms and their availability hours. No parameters are needed to be passed when making this request.
 
 The response will look like :
-`[ { "roomName": "C01", "availabilities": [ [ "9-17" ] ] }`
+`[ { "roomName": "C01", "availabilities": [ [ "9-17" ] ] }]`
 
 #### POST:
 
@@ -91,6 +91,7 @@ body of the request must include the following:
     "event_end":"10:00"
 
 The response will look like :
+`{ "message": "reservation created }`
 
 This request will be helpful to make a reservation in the system. we need to pass some parameters that are required to make a reservation for a room and a period.
 
@@ -104,6 +105,9 @@ body of the request must include the following:
     "companyName": "COKE",
     "event_start": "09:00",
     "event_end":"10:00"
+
+The response will look like :
+`{ "message": "successfully deleted" }`
 
 # Tools & Technologies & Practices
 
