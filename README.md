@@ -111,13 +111,13 @@ The response will look like :
 
 # Tools & Technologies & Practices
 
-- The Eslint, Prettier, Husky with Conventional Commits have been employed to ensure proper formatting and adhering to standards and team practices while ensuring proper testing and commit messaging are readable and helpful for understanding and tracability.
+- The Eslint, Prettier, Husky with Conventional Commits have been employed to ensure proper formatting and adhering to standards and team practices while ensuring proper testing and commit messaging are readable and helpful for understanding and traceability.
 
-- Factory Function Design Pattern with the concept of Dependency injection have been used in the code of the system that maximises readability and ease of testability.
+- Factory Function Design Patterns with the concept of Dependency injection have been used in the code of the system that maximizes readability and ease of testability.
 
-- Abstraction and modularity has been taken into account during the development of the system.
+- Abstraction and modularity have been taken into account during the development of the system.
 
-- Error Type Definition and Typed Error handling is used to ensure consistensy of using errors and handling them.
+- Error Type Definition and Typed Error handling are used to ensure consistency of using errors and handling them.
 
 - A queue library is used to get the reservation requests and make the system process them in the order they arrive.
 
