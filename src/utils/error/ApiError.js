@@ -4,12 +4,12 @@ class ApiError {
     this.message = message;
   }
 
-  static badRequest(msg) {
-    return new ApiError(400, msg);
+  static badRequest(message) {
+    return new ApiError(400, message);
   }
 
-  static internal(msg) {
-    return new ApiError(500, msg);
+  static internal(message) {
+    return new ApiError(500, message);
   }
 }
 
