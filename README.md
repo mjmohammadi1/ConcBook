@@ -1,15 +1,15 @@
 # Welcome to ConcBook!
 
-**ConcBook**, is a booking system that allows its users to reserve the room that they need in a shared work envirnment with no time conflicts. The users of this system do not need to trust each other as system will allow each them to make a specific number of reservations, the usage is following a simple rule **first come, first served**.
+**ConcBook** is a booking system that allows its users to reserve the room that they need in a shared work environment with no time conflicts. The users of this system do not need to trust each other as the system will allow each of them to make a specific number of reservations, the usage is following a simple rule **first come, first served**.
 
-#### NOTE : The development of this system is in progress.
+#### NOTE: The development of this system is in progress.
 
 # How to use
 
-To run the app based on different usages we need environemnt variables that are included in a .env files:
+To run the app based on different usages we need environemnt variables that are included in .env files:
 ![Alt text](/app-env-files.png)
 
-The values inside all the highlighted .env files are follwoing the same structure and they share the same name, so you just need to putsome values inisde of it.
+The values inside all the highlighted .env files are following the same structure and they share the same variable names, so you just need to put some values inside of it.
 
 `SERVER_PORT=port number`
 
@@ -36,24 +36,24 @@ The values inside all the highlighted .env files are follwoing the same structur
     3- Create .env file in root directory
     4- Run "docker-compose up" from the root directory to spin up the containers and use the app.
 
-#### 2- If running the **app locally for development and testing** , The database can be used for the app by either running a **PostgreSQL container which requires docker installation** or **installing it using the postgreSQL from its official website**.
+#### 2- If running the **app locally for development and testing**, The database can be used for the app by either running a **PostgreSQL container that requires docker installation** or **installing it using the PostgreSQL from its official website**.
 
     * To run PostgreSQL in the container:
 
-      - docker run --name "container name" -p 5432:5432 -e POSTGRES_USER="username" -e POSTGRES_PASSWORD= "password" postgres
+      - docker run --name "container name" -p 5432:5432 -e POSTGRES_USER="username" -e POSTGRES_PASSWORD="password" postgres
 
     * To Install postgres locally: \* download and install it from https://www.postgresql.org/download/ , you may also need **PgAdmin** https://www.pgadmin.org/download/
 
     * run the following commands:
-      in the root directory of the project:
-        1- npm i => to install the dependencies
-        2- npm run migrate => to run the migration files
-        3- npm run seed => to prepopulate the running database from above described approaches
-        4- npm run dev =>  to start the server => at this step you'll be able to use the system
-        5- (optional) npm run test => to run the unit tests
-        6- (optional) npm run test:integration => to run the integration tests (in this case we need to give a fresh atabase for the integration tests)
+      In the root directory of the project:
+        1- npm i => to install the dependencies.
+        2- npm run migrate => to run the migration files.
+        3- npm run seed => to prepopulate the running database from above described approaches.
+        4- npm run dev =>  to start the server => at this step you'll be able to use the system.
+        5- (optional) npm run test => to run the unit tests.
+        6- (optional) npm run test:integration => to run the integration tests (in this case we need to give a fresh atabase for the integration tests).
 
-        In this approach  environment files are needed to be created and put in the **/config** directory of the project. These files are called:
+        In this approach environment files are needed to be created and put in the "/config" directory of the project. These files are called:
          .env.dev and .env.test
 
 The values of **.env.dev** are used when we are running the app in the **development mode** and the **.env.test** is used when we are running the **integration tests**.
@@ -62,18 +62,19 @@ To start using the system and consuming the resources we need to know the contra
 
 Rules about the current implementation:
 
-- every room is available from 09-17 evey day.
-- every user can make 10 reservations regardless of the reservation duration.
-- users should be able to see the rooms hourly availabilities
+- Every room is available from 09-17 every day.
+- Rooms can not be booked for more than 8 hours every day.
+- Every user can make 10 reservations regardless of the reservation duration.
+- System will not allow users to make reservations if there is an overlap.
+- Users should be able to see the rooms and their hourly availabilities
 
-we can make 3 types of requests to the booking system at the moment:
+We can make 3 types of requests to the booking system at the moment:
 
 #### GET :
 
 #### example: localhost:3000/bookings/
 
-This request is helpful to get the available rooms and their availability hours.No parameters are needed to be passed when making this request.
-example: localhost:3000/bookings/
+This request is helpful to get the available rooms and their availability hours. No parameters are needed to be passed when making this request.
 
 The response will look like :
 `[ { "roomName": "C01", "availabilities": [ [ "9-17" ] ] }`
@@ -91,12 +92,12 @@ body of the request must include the following:
 
 The response will look like :
 
-this request will be helpful to make a reservation to the system. we need to pass some parameters that are required to make a reservation for a room and a period.
-note: the requests should b
+This request will be helpful to make a reservation in the system. we need to pass some parameters that are required to make a reservation for a room and a period.
 
 #### PUT:
 
-localhost:3000/bookings/
+#### example: localhost:3000/bookings/
+
 body of the request must include the following:
 
     "roomName":"C07", // can be different depending on rooms available
