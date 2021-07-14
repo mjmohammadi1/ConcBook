@@ -17,7 +17,7 @@ services:
   server:
     container_name: booking_server
     build: .
-    entrypoint: ['./wait-for-it.sh', '${DB_HOSTNAME}:${DB_PORT}', '--', './entrypoint.sh']
+    entrypoint: ['./wait-for-it.sh', '${DB_HOSTNAME}:${DB_PORT}', '--', './app-entrypoint.sh']
     restart: unless-stopped
     ports:
       - '3000:3000'
